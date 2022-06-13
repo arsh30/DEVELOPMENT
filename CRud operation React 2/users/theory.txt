@@ -1,0 +1,371 @@
+step 1 🙋‍♂️ -> create react app 
+step2 🙋‍♂️ -> npm install react-bootstrap bootstrap [from react bootstrap]
+          -> copy th css link and paste in INDEX.JS -> import 'bootstrap/dist/css/bootstrap.min.css';  
+                Or normall bootstrap use krni ho toh : import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+
+Note ⚠⚠ -> Page Navigation in react , but react me page hota hi nhi component hota hai 
+            normal jo static website hoti hai usme hm a tag dete hai href me location dete hai to vo uss page pr re-render hojata hai
+
+            so react me navigation jo krte hai vo sare work krte hai single page par. but component boht hote hai unpr rendering hojati hai 
+            eg: public folder -> we have only 1 html page, or index.js me load krta hai -> ReactDOM.render('updated component', jis element me paste krna hai sab);
+
+step3 🙋‍♂️ -> create folder -> pages -> jo jo page honge vo sare isme honge like home.js, About.js, contact.js yeh 3 component 
+          -> import the component in App.js 
+
+step 4 🙋‍♂️ -> create folder layout -> isme header footer navbar etc hoga 
+
+step 5 🙋‍♂️ -> 1st import the Navbar from getbootstrap.com  copy and paste the code class ko  change krke className  and remove all li tags jo jo require hai bss voi lenge
+
+step 6 🙋‍♂️->  To do linking taki page refresh na ho -> install react package npm i react-router-dom -> to do routing 
+          -> { import Router,Routes,Route,link } import into main file ie App.js
+
+          -> step 1 -> jo bhi App.js me component un sabko Router me wrap krege 
+         
+          -> step 2-> Then Routes tag use krege jo import kra , because jis bhi link click ho voi component visible ho thats why we use Routes or Switch
+          -> jo component ko har page pr visible krwana hai usko Switch or Routes me wrap nhi krege 
+
+          -> step 3 -> jo bhi page ko redirect krna hai means jo route dena hai vo denge 
+                        eg: <Route exact path="/" element={<Home />}></Route> 
+
+          -> step 4 -> jidr jidr jo jo link use hora mtlb jidr hum chahte ki vo page open hoje to 'a' tag ki jgh Link tag use krege and href ki jgh 'to' use krege
+          eg: <Link to="/contact" className="nav-link active" aria-current="page" > Contact </Link>
+
+step 7 🙋‍♂️ -> ik form bnaege usko paste krege into contact component or we can copy it from bootstrap 
+
+step 8 🙋‍♂️ -> make 404 page  in pages folder
+          -> so make a NotFound component jo route hai vo app.js me rakhege eg:  <Route path="*" element={<NotFound />}></Route>
+
+
+step 9 🙋‍♂️🙋‍♂️  -> START OUR CRUD APPLICATION
+              
+              -> Api call krege udr se humko data milega sidha, means ik url milega uspr click krege to sara data aayega
+              -> so for api, we use fake api ie "FAKE JSON SERVER" we will create a fake api 
+              
+              -> install for creation of fake api --> step 1.)  npm i json-server
+              -> step 2.)  Create a db.json file with some data
+              -> step 3.) jo data hai vo hum lenge: -> jsonplaceholder.typicode.com and resources me users hoga usko lenge 
+                         and paste into db.json -> [make sure db.json src folder ke bhar ho]
+
+              -> step 4.) start json server -> json-server --watch db.json
+
+                        [Note: problem is ki 2 server run krne honge like one for npm start and other is for json-server but we only can use 1 server from 1 terminal
+                        at a time. so we have to change the settings] 
+
+                        -> go to package.json -> scripts -> and add :- "json-server": "json-server --watch db.json --port 3003",
+                        -> we want ki dono server ik sth run ho , we install package : npm i concurrently
+
+                        -> jo search krege url me eg: localhost:3003/users [api name] -> to open the file 
+                        -> again go to package.json -> add in scripts : npm run:dev : "start": "concurrently \"command1 arg\" \"command2 arg\""
+
+
+step 10 🙋‍♂️🙋‍♂️ -> MAIN CRUD START 
+             -> npm install axios:  because hum "get request" krke data show krwaege "Home page Component" par 
+             
+             -> we need UseState hook  to store the variable 
+             -> we need useEffect hook jisme hum api call krege 
+             -> go to get bootstrap.com copy the table from there  and paste in Home component 
+
+            ----------- READ THE API ----------------
+            import React, { useEffect, useState } from "react";
+            import axios from "axios";
+            import { Link, useResolvedPath } from "react-router-dom";
+
+            function Home() {
+            const [users, setUser] = useState([]);
+
+            useEffect(() => {
+            loadUsers();
+            }, []);
+
+            const loadUsers = async () => {
+            const res = await axios.get("http://localhost:3003/users");
+            // console.log(res.data);
+
+            //to show the data on home page
+            setUser(res.data);
+            };
+
+            return (
+            <div className="container">
+                  <div className="py-4">
+                  <h2>Home</h2>
+
+                  <table className="table border shadow">
+                  <thead className="thead-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Action</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                        {users.map((user, index) => {
+                        return (
+                        <tr key={index}>
+                              <th>{index + 1}</th>
+                              <td>{user.name}</td>
+                              <td>{user.username}</td>
+                              <td>{user.email}</td>
+
+                              <td>
+                              <Link to="" className="btn btn-primary mr-2">
+                              {" "}
+                              View
+                              </Link>
+                              <Link to="" className="btn btn-outline-primary mr-2">
+                              Edit
+                              </Link>
+                              <Link to="" className="btn btn-danger mr-2">
+                              Delete
+                              </Link>
+                              </td>
+                        </tr>
+                        );
+                        })}
+                  </tbody>
+                  </table>
+                  </div>
+            </div>
+            );
+            }
+
+            export default Home;
+            ------------------------------------------------------        
+
+
+Step 11  🙋‍♂️🙋‍♂️ -> Now we have to do 3 work : edit delete view 
+               -> create folder user into components and make a file Add User 
+               -> create a form over there paste it from bootstrapp
+
+               -> Add User 
+               -> Main work is to do here data upload krna database me 
+                  but for that we have to store into the state
+
+               ->   import { useState } from "react";
+            import axios from "axios";
+            const AddUser = () => {
+            const [user, setUser] = useState({
+            name: "",
+            username: "",
+            email: "",
+            phone: "",
+            });
+
+            const { name, username, email, phone } = user;
+
+            const onInputChange = (e) => {
+            //   console.log(e.target.value);  hum chahte hai ki value print ho display pr
+            setUser({ ...user, [e.target.name]: e.target.value });
+            //means name sabme common liya hai agr kisi pr bhi click krta hai to vo value ajegi
+            //   eg: email pr click hua -> e.target.name[name ki value email hai]
+            //   spread operator used because agr email pr click kra to email vali field rhegi or baki 2 remove hojegi, 
+            // data store hogya hai state, now ab work is ki data ko bhjna api me 
+            // we have form
+            
+            };
+            const onSubmit = async (e) => {
+                  e.preventDefault();
+
+                  // data aa chuka hai
+                  // so hum post request bhjege
+                  await axios.post("http://localhost:3003/users", user);  // 2nd parameter is kya data bhjre hai hum user bhjre hai state
+                  
+                  //redirect to homepage -> so we use useHistory hook from 'react router dom'
+            }
+
+            return (
+            <div className="container">
+                  <h2>Add User</h2>
+
+                  <form onSubmit={(e)=> onSubmit(e)}>
+                  <div class="mb-3">
+                  <input
+                        type="Name"
+                        placeholder="Enter your Name"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        name="name"
+                        value={name}
+                        onChange={(e) => onInputChange(e)}
+                  />
+                  </div>
+                  <div class="mb-3">
+                  <input
+                        placeholder="Enter your UserName"
+                        type="username"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        name="username"
+                        value={username}
+                        onChange={(e) => onInputChange(e)}
+                  />
+                  </div>
+                  <div class="mb-3">
+                  <input
+                        placeholder="Enter your Email"
+                        type="email"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        name="email"
+                        value={email}
+                        onChange={(e) => onInputChange(e)}
+                  />
+                  </div>
+                  <div class="mb-3">
+                  <input
+                        placeholder="Enter your contact"
+                        type="phone"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        name="phone"
+                        value={phone}
+                        onChange={(e) => onInputChange(e)}
+                  />
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">
+                  Submit
+                  </button>
+                  </form>
+            </div>
+            );
+            };
+
+            export default AddUser;
+
+---------------------------------2) Edit user.js -----------------------
+step 1 -> copy all the add code
+step 2 -> firstly we laod the users 
+
+import { useEffect, useState } from "react";
+import React from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
+const EditUser = () => {
+  const [user, setUser] = useState({
+    name: "",
+    username: "",
+    email: "",
+    phone: "",
+  });
+
+  const { name, username, email, phone } = user;
+
+  const { id } = useParams();
+  // alert(id);
+
+  const onInputChange = (e) => {
+    //   console.log(e.target.value);  hum chahte hai ki value print ho display pr
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
+  const loadUser = async () => {
+    const result = await axios.get(`http://localhost:3003/users/${id}`); // idr hum btana pdhega ki konse user ka chaiye so we do dynamic routing
+    // jo parameter aarahai after putting the route in app.js, then we have to use the hook useParams
+
+    //idr se data aara hai usko store user hook because it is already exist
+    setUser(result.data);
+
+    // console.log(result);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.put(`http://localhost:3003/users/${id}`, user); // 2nd parameter is kya data bhjre hai hum user bhjre hai state, and here is the change enter put request
+  };
+
+  return (
+    <div className="container">
+      <h2>Add User</h2>
+
+      <form onSubmit={(e) => onSubmit(e)}>
+        <div class="mb-3">
+          <input
+            type="Name"
+            placeholder="Enter your Name"
+            class="form-control"
+            aria-describedby="emailHelp"
+            name="name"
+            value={name}
+            onChange={(e) => onInputChange(e)}
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            placeholder="Enter your UserName"
+            type="username"
+            class="form-control"
+            aria-describedby="emailHelp"
+            name="username"
+            value={username}
+            onChange={(e) => onInputChange(e)}
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            placeholder="Enter your Email"
+            type="email"
+            class="form-control"
+            aria-describedby="emailHelp"
+            name="email"
+            value={email}
+            onChange={(e) => onInputChange(e)}
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            placeholder="Enter your contact"
+            type="phone"
+            class="form-control"
+            aria-describedby="emailHelp"
+            name="phone"
+            value={phone}
+            onChange={(e) => onInputChange(e)}
+          />
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-block">
+          Update User
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default EditUser;
+
+----------------------------
+3) DELETE 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+REACT BOOTSTRAP CLASSES -> 1. container 
+                           2. py-4  
+                           3. display-1
