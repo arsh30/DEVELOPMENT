@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bubbling</title>
+  </head>
+  <style>
+    .parentDiv {
+      height: 400px;
+      width: 200px;
+      border: 2px solid black;
+      background-color: skyblue;
+      border: 10px solid #10ac84;
+      box-shadow: 0 10px 13 px -10px rgba(0, 0, 0, 0.4);
+    }
+    .childDiv {
+      height: 200px;
+      width: 200px;
+      border: 2px solid black;
+      background-color: #1dd1a1;
+      border: 10px solid #10ac84;
+      box-shadow: 0 10px 13 px -10px rgba(0, 0, 0, 0.4);
+    }
+  </style>
+  <body>
+    <div class="parentDiv" id="parentId">
+      "hello parent div"
+      <div class="childDiv">hello child div</div>
+    </div>
+    <script>
+      const parentId = document.getElementById("parentId");
+      const childId = document.querySelector("childDiv");
+
+      const parentCall = () => {
+        alert("parentDivcall");
+        console.log("parent div call");
+      };
+
+      const childCall = () => {
+        alert("childDivCall");
+        console.log("child div call");
+        // event.stopPropagation(); it is used to stop the propagation jo bydefault upr wale pr click hora tha
+        // agr yeh nhi likhte to upr wala alert bhi aata
+        // it is used when we want ki uske click par hi run hoye or kisi par nhi
+      };
+      //   parentId.addEventListener("click", parentCall);  // this is event bubbling, bottom to top approach
+      //   childId.addEventListener("click", childCall);
+
+      // event capturing only we have to do is , it is mostly applied on addEventListner event and for event capturing, we have to pas 3 rd parameter
+      parentId.addEventListener("click", parentCall, true); //3rd parameter is event capturing, if it is true then it is event capturing
+      childId.addEventListener("click", childCall, true); // by default it is false
+    </script>
+  </body>
+</html>

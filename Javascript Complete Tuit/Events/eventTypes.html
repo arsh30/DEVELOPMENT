@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events type of writting</title>
+  </head>
+  <body>
+    <div>
+      <h1>Different Event types in JS</h1>
+      <div>
+        <a href="#" onclick="alert(`I am awesome`)"
+          >Simple Inline alert! No one use this</a
+        >
+      </div>
+    </div>
+
+    <div>
+      <a href="#" onclick="callingFunction()"
+        >calling a function 2nd way [Mostly used ]</a
+      >
+    </div>
+
+    <div>
+      <a href="#" id="thirdWay">Inline Event 3rd way of writting an event</a>
+    </div>
+
+    <div>
+      <a href="#" id="fourthWay">4th way of writting Event Listners</a>
+    </div>
+
+    <script>
+      const callingFunction = () => {
+        alert("2 way of declare of an Event and it is mostly used");
+      };
+
+      // 3rd way of writting an event
+      const thirdWay = document.getElementById("thirdWay");
+      thirdWay.onclick = function () {
+        alert("this is the third way of writting of an event");
+      };
+
+      //It over ride the function,
+      thirdWay.onclick = function () {
+        console.log("this is the third way of writting of an event");
+      };
+
+      // 4th way of writting an event ie eventLitner ie addEventListner
+      //   Benefit addEventListner event hum multiple baar use kr skte hai
+      const fourthWay = document.getElementById("fourthWay");
+      fourthWay.addEventListener("click", () => {
+        alert("4th way of writing an event using addEventListner");
+      });
+      // It takes 3 arguments ie 1st is konse event ko use krna h, 2nd is konse function ko call krna hai, 3rd is optional ie true or false
+      // Note: 3rd way is less used because its over ride the function agr humko dono event same dono chlane ho
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+
+.bg-blue {
+  background-color: pink;
+  color: white;
+}
+
+#head{
+    background-color: yellowgreen;
+}
+
+.yellow {
+    background-color: gold;
+    color: black;
+    border: 2px solid blueviolet;
+}
+
+.blue{
+    color: orange;
+}

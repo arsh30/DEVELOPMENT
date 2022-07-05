@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key Press event in Javascript section 4</title>
+  </head>
+  <body>
+    <div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt,
+        dolorum praesentium ad cumque, eveniet ex ratione vero obcaecati
+        consectetur incidunt quisquam.
+      </p>
+      <br />
+      <input
+        type="text"
+        onkeypress="keypress()"
+        onkeydown="keyDown()"
+        onkeyup="keyUp()"
+      />
+      <br />
+      <p id="keys"></p>
+    </div>
+    <script>
+    //   const keypress = () => {
+    //     document.getElementById(
+    //       "keys"
+    //     ).innerHTML = `you press ${event.key} and It is code is ${event.code}`; //key si konsi key press kri h and uss key ka code kya h, event is parent object
+    //   };
+
+      // better to use 2nd and 3rd once
+
+      const keyDown = () => {
+        document.getElementById("keys").innerHTML = `key is down`;
+      };
+
+      const keyUp = () => {
+        document.getElementById("keys").innerHTML = `key is Up`;
+        //   when we click the backslash to delete then it will run
+      };
+    </script>
+  </body>
+</html>

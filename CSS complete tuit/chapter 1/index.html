@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      CREATE FIRST WEBSITE - Three Ways of Styling CSS - style tag, inline css,
+      external css
+    </title>
+  </head>
+  <!-- <style>
+    /* 1st way of styling using - "style tag" */
+    #first {
+      background-color: red;
+    }
+    .bg-blue {
+      background-color: aqua;
+      color: white;
+    }
+  </style> -->
+
+  <link rel="stylesheet" href="style.css">
+
+  <body>
+    <div id="first" style="background-color: aqua;">first</div> 
+    <!-- inline css -> internal css using style attribute -->
+    <div id="second">second</div>
+
+    <section class="red">red</section>
+    <section class="red bg-blue border-purple">
+      red bg-blue AND border-purple
+    </section>
+  </body>
+</html>
+
+<!-- NOTE: Id is unique in whole html , 
+           but class can be multiple. if we want to add styling on multiple elements we have to give class
+        -->
+
+        

@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: rgb(91, 203, 141);
+  color: black;
+}
+
+.container,
+.input-container,
+.task-container {
+  border: 1px solid;
+}
+
+.input-container {
+  height: 20vh;
+  width: 100%;
+  text-align: center;
+  /* text align: center me lane ke liye elements ko */
+  margin: auto;
+}
+
+.task-container {
+  height: 80vh;
+}
+
+.task-input {
+  text-align: center;
+  font-size: 1.5rem;
+  height: 5rem;
+  width: 30%;
+  font-style: italic;
+  /* iska parent input container */
+}
+
+.task-container li {
+  font-size: 1.5rem;
+  list-style: none;
+  /* list style : none iske bullet point remove hojate hai */
+  background-color: rgb(9, 89, 45);
+  text-align: center;
+  width: 40%;
+  margin-top: 10px;
+}

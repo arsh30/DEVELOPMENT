@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeOut</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <p>Wanrt to know my name</p>
+        <br />
+        <p id="showMyName"></p>
+        <button id="click">Click here</button>
+      </div>
+    </div>
+    <script>
+      const showMyName = document.getElementById("showMyName");
+      const btn = document.getElementById("click");
+
+      const shownMyName = () => {
+        showMyName.innerHTML = "Loading...";
+        // when we use fat arrow function first we have to declare the function
+        setTimeout(() => {
+          showMyName.innerHTML = "Arshdeep Singh";
+        }, 5000); // means after 8 sec this set time will automatically run and it is asyncronous behaviour
+      };
+      btn.addEventListener("click", shownMyName);
+    </script>
+  </body>
+</html>

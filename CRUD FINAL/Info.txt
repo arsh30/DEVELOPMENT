@@ -1,0 +1,131 @@
+step 1 ->  Installing bootstrap from getBootsrap - npm i bootstrap -> import css link  in app.js -> import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+step 2-> make pages for every page -> so make folder components and another folder pages -> create simple dummy components -> add bootstrap classes also ie 
+         container,py-4 and insatll into the app.js
+
+step 3 -> create new folder layout which contain header,footer-> Add Navigation baar from getBootsrap and pste into the Nav.js 
+
+step 4 -> Now apply Routing from package npm i react-router-dom 
+       -> main component jo hai ie App.js usme lgaege 1st BrowserRouter, Routes, Route, Links -> yeh import krege and jo link hai vo Nav.js me honge
+       -> BrowserRouter isme sare routes aayege jo app.js me hai vo sab isme wrap krdege 
+       -> Nav ko Routes se bhar rakhege because vo har page par show krwani hai 
+       -> jo jo main tag hai usko <Route> isme likhege. eg:  <Route exact path="/about" element={<About />}></Route>
+       -> Nav.js isme jo a tag hai usko replace krege with Link tag. eg: 
+
+step 5 -> Adding some content into this
+       -> About.js -> p tag -> lorem 30 -> 2 3 dalege 
+       -> contact.js -> form tag  get bootstarp.com udr se paste krege
+
+step 6 -> make 404 not found page -> IMPORT INTO app.js 
+
+step 7 -> Make CRUD application, means api call krege udr se sara data ayega. api apni nhi bnaege -> "fake json api" use krege 
+       -> npm i json-server -> [backend sare feature ajate h]
+       -> create db.json file outside from the source folder : ISME JO DATA Lege vo "https://jsonplaceholder.typicode.com/users" idr se 
+       -> copy and paste the data into the db.json { "users": paste the code here}
+
+       -> MAIN PROBLEM DO THESE SETTING
+       -> in package.jon -> add into scripts: "json-server":"json-server --watch db.json --port 3003";  // --port 3003 because 3000 already run hora hum chahte hai ki 
+          alag alag run hoye, ik baar run krke dekh lenge npm run json-server
+       -> now we want ki dono script start and json server ek sath run ho: so we install one package: npm i concurrently 
+       -> paste this into package.json -> "start": "concurrently \"command1 arg\" \"command2 arg\"". -> "start:dev": "concurrently \"npm start\" \"npm run json-server\"",
+
+--- MAIN -----
+step 8 -> Install axios from npm i axios and import into the Home.js because udr hmne sara data load krwana hai
+       -> import useState taki jo data mangwaege usme store kr paye
+       -> useEffect hook taki hum api call kr paye and ik function bnaege loadUsers() jo async hoga kyoki jb api call krege tb time lgega 
+          and usko call krege into the useEffect hook 
+
+          ie  const [users, setUsers] = useState([]);
+                useEffect(() => {
+                    // console.log("hello");
+                    loadUsers();
+                })
+                const loadUsers = async () => {
+                    const res = await axios.get("http://localhost:3003/users");
+                   // console.log(res.data);
+                    setUsers(res.data);  //agr .data nahi likhte to eror aayega users.map is not a function
+                }
+
+       -> and humko yeh show krwana hai html pr, so uske liye hum ik table lenge from bootstarp
+       -> and then loop lgage array par and get krwaege 
+       
+       -> Now add btn to every users which are coming from array, taki agr edit kre to vo page open hoje eg:  <Link to="" class="btn btn-danger">Delete</Link>
+
+       -> Now ab hum chahte hai ki ik btn hoye "addUser" in the navbar.js
+
+
+       Home.js code ->
+       import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
+const Home = () => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    // console.log("users", users);
+    loadUsers();
+  }, []);
+
+  const loadUsers = async () => {
+    const res = await axios.get("http://localhost:3003/users");
+    // console.log(res.data);
+    setUsers(res.data);
+  };
+
+  return (
+    <div className="container">
+      <div className="py-4">
+        <h2>Home component</h2>
+
+        <table className="table border shadow">
+          <thead className="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">UserName</th>
+              <th scope="col">Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, index) => {
+              return (
+                <tr>
+                  <th>{index + 1}</th>
+                  <td>{user.name}</td>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                  <td>
+                    <Link to="" class="btn btn-primary mr-2">
+                      View
+                    </Link>
+                    <Link to="" class="btn btn-outline-primary mr-2">
+                      Edit
+                    </Link>
+                    <Link to="" class="btn btn-danger">
+                      Delete
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
+
+-----------------------
+
+Step 9 -> make folder users -> jisme sare honge add, delete, edit etc 
+
+9.1 -> Add user make component and then iska route define krege into the  app.js 
+        eg:  <Route exact path="/users/add" element={<AddUser />}></Route>
+        
+
+
+
+

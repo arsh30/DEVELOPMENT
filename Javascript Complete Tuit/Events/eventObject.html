@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Object in Event section 2</title>
+  </head>
+  <body>
+    <div>
+      <a href="#" id="fourthWay">Event listners</a>
+    </div>
+
+    <script>
+      const checkEvent = () => {
+        console.log(event); // isme target hota hai ki kispr click kra hai
+        console.log(event.target); // mostly this is used
+        console.log(event.type); // it gives type the events
+      };
+      let fourthWay = document.getElementById("fourthWay");
+      fourthWay.addEventListener("click", checkEvent);
+      // to get all the information about the information about the event, we can use the Event Object
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display</title>
+    <style>
+      .di {
+        height: 10rem;
+        width: 10rem;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .red {
+        background-color: red;
+      }
+      .green {
+        background-color: green;
+      }
+      .nav {
+        background-color: pink;
+      }
+      .d2 {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>1. Block Elements</h1>
+    <p>
+      1. Those elements which occupy the complete horizontal space and does not
+      allow any other element occupy their horizontal space even it is empty 2.
+      We can specify their height and width 3. eg: div, p, nav
+    </p>
+
+    <div class="di blue"></div>
+    <div class="di red"></div>
+    <div class="di green"></div>
+
+    <h1>2. Inline Elements</h1>
+    <p>
+      Tthese element allow their horizontal space but we can not set the height
+      and width. 2. Eg span tag
+    </p>
+
+    <span class="di blue">span 1</span>
+    <span class="di red">span 2</span>
+    <span class="di green">span 3</span>
+
+    <h1>3. Inline Block Elements</h1>
+    <p>
+      These elements have mixed properties of block and inline. We can give
+      height and width to them. They does not occupy complete horizontal space
+    </p>
+
+    <div class="di d2 blue"></div>
+    <div class="di d2 red"></div>
+    <div class="di d2 green"></div>
+  </body>
+</html>

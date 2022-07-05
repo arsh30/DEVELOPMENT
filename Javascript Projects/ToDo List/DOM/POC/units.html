@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Units in css</title>
+  </head>
+  <body style="margin: 0px">
+    <!-- 1. pixels. -> It depends on PPI. means chote chote pixels ko combine krke
+        1 area bnta hai ie pixels.
+
+        eg: low resolution px have larger icons. why? because they have low PPI
+            High resolution px have smaller icons. why? because they have high PPI
+     -->
+    <!-- <span style="font-size: 50px">Arshdeep Singh</span> <br /> -->
+
+    <!-- 2. rem -> Browser gives automatically size to our html. It always depend on device to device
+        generally 1 rem is 16 px but it is not true
+
+        It is varying on device to device [1 rem har device ko alag alag milti hai and browser provide krta hai]. Mostly it is used because we can make friendly web pages
+
+        [Note: agr "rem" se na ho to we go to the "pixel"]
+     -->
+    <!-- <span style="font-size: 2rem">Arshdeep Singh</span> -->
+
+    <!-- 3. em: em yeh apne parent se puchta hai 
+    jitna uska size hai use multiply hojata hai. 1em = parent size -->
+    <!-- <div style="font-size: 20px">
+      <span style="font-size: 2em">Arshdeep</span>
+    </div> -->
+
+    <!-- 4. '%' -> It is similar to the em unit yeh bhi apne parent se jakr puchta hai ki uska kitna hai
+    parent se apne aap ko mulitply krleta hai -->
+    <!-- 
+    <div style="font-size: 20px">
+      <span style="font-size: 200%">Arshdeep</span>
+    </div> -->
+
+    <!-- 5. ViewPort -> it hve 2 thing 
+        1.  100 vw is device width
+    2. 100 vh -> is device height -->
+
+    <div style="width: 100vw; height: 20vh; background-color: red"></div>
+    <div style="height: 80vh; background-color: green"></div>
+  </body>
+</html>

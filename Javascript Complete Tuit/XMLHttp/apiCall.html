@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api call</title>
+  </head>
+  <body>
+    <div id="container"></div>
+
+    <script>
+      const container = document.querySelector("#container");
+
+      // to use we have to paas a reference  of http
+      const request = new XMLHttpRequest();
+      request.open("GET", "https://restcountries.eu/rest/v2/name/nepal");
+      request.send(); // request krke send bhi krna pdhta to get the results
+
+      // to get the response jo unhone bhja
+      request.addEventListener("load", function () {
+        //    const data =  this.responseText;  //this -> current context is request object jisme data hai sare
+        // console.log(this.responseText);
+
+        //ik array me aara hai data so we use array destructuring
+        const [data] = JSON.parse(this.responseText); //JSON.parse agr javascript object me convert krna hai toh we use this
+        // console.log(data.nepal);
+        const htmlData = `
+        isme sab putt krlege unki value then .innerHtml 
+        eg: container.insertAdjacentHtml("afterbegin",htmlData); 
+        // afterbegin means jo bhi 1st div hoga usme
+
+        `;
+      });
+    </script>
+  </body>
+</html>
+<!-- 
+    xmlHttp req are used to interact with servers. 
+    It is asyncronous
+    you can retrieve data from url without having to do a full page refresh
+    AJAX -> It is async javascript and XML, It is used to build dynamic webpages and 
+    means after particular time jo data chaiye hoga vo mil jaega
+
+ -->

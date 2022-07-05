@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clearTimeOut</title>
+  </head>
+  <body>
+    <!-- clearTimeOut ->  
+    eg: some btn pr events hote hai ki iss time pr yeh event fire hojega eg setTime out but then
+    we realise ki iss event ko nhi use krna tha. so we use this.  means ik hor btn pr agr click kre to vo jo function
+    hai setTimeOut vo stop hoje 
+    -->
+
+    <div>
+      <div>
+        <p>Click "try it" wait 3 sec. the page will alert "Hello"</p>
+        <p>Click stop to prevenet the first function to execute</p>
+        <p>(You must called stop before the 2 seconds are up)</p>
+
+        <button onclick="myVar = setTimeout(()=>{  alert('Hello')},2000)">Try It</button>
+        <button onclick="clearTimeOut(myVar)">Stop It</button>
+        <!-- when we use clear time out pehle hame setTime Out ka reference catch krege or usko clearTimeOut me paas krege -->
+      </div>
+    </div>
+    <script>
+      function myFunction() {
+        alert("hello");
+      }
+    </script>
+  </body>
+</html>

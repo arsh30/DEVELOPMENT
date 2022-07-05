@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setInterval</title>
+  </head>
+  <body>
+    <!-- It runs after eveery 1 seconds -->
+    <div>
+      <p>can you stop me when i reached at 5</p>
+      <br />
+      <button id="btn">start</button>
+      <button id="btn1">stop</button>
+    </div>
+    <script>
+      const stoping = document.querySelector("p");
+      const btn = document.querySelector("#btn");
+      const stopInterval = document.querySelector("#btn1");
+      let num = 0;
+      let timeRef; // jbhi hamko stop krna hai clearTimeOut interval and clearInterval, so we have to pas the reference, so for this we need a variable to catch
+      //   that setInterval function
+      showmyNum = () => {
+        stoping.innerHTML = "Loading....";
+        timeRef = setInterval(() => {
+          stoping.innerHTML = `${num}`;
+          num++;
+        }, 1000);
+      };
+
+      btn.addEventListener("click", showmyNum);
+      stopInterval.addEventListener("click", () => {
+        clearInterval(timeRef); // here we are terminating the program
+      });
+    </script>
+  </body>
+</html>

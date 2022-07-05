@@ -1332,17 +1332,598 @@ console.log(myName);
 
 // 👀 Times Method
 
-const currTime = new Date();
+// const currTime = new Date();
 // console.log(currTime.toLocaleString());
 // console.log(currTime.getTime());  //it gives in milliseconds
-// console.log(currTime.getHours());
+// console.log(currTime.getHours());  // 0 to 23  hr
 // console.log(currTime.getMinutes());
 // console.log(currTime.getSeconds());
 // console.log(currTime.getMilliseconds());
 
-// how to st the individual time 🙋‍♂️
+// how to set the individual time 🙋‍♂️
+
 // console.log(currTime.setTime());
-console.log(currTime.setHours(5));
-console.log(currTime.setMinutes(5));
-console.log(currTime.setSeconds(5));
-console.log(currTime.setMilliseconds(5));
+// console.log(currTime.setHours(5));  // op 1655208394968 agr aisa mili seconds me aaye to direct, to new date(isme paste krege to corect milega)
+// console.log(currTime.setMinutes(5));
+// console.log(currTime.setSeconds(5));
+// console.log(currTime.setMilliseconds(5));
+
+// eg:
+// (function () { paste into HTML
+//   setInterval(() => {
+//     var d = new Date().toLocaleString();
+//     document.getElementById("demo").innerHTML = d;
+//   }, 1000);
+// })();
+
+// ==================== challenge 11 ======================
+
+//IMPORTANT  Note: agr hame time chaiye sirf , ya date chaiye sirf, ya dono chaiye to kya method use kre?
+
+// var d = new Date().toLocaleTimeString();  // it gives only time
+// var d = new Date().toLocaleDateString(); //it gives only date
+// var d = new Date().toLocaleString();  //it gives both date and time
+// console.log(d);
+
+// ====================================================
+
+/****** Section 9 Math Object in Javascript ********/
+
+// the javascript Math object allows you to perform mathematical operations task on numbers
+
+// console.log(Math.PI);🙋‍♂️
+
+// Math.round() 🙋‍♂️
+// It rounded to the nearest value
+// let num = 10.225;
+// console.log(Math.round(num)); // means agr 10.5 ise .5 se .1 koi kam jyda ho to uske about value deta h
+
+// Math.pow()🙋‍♂️
+// Math.pow(x,y) eturn the x to the power y
+// console.log(Math.pow(2, 3));
+// console.log(2**3);
+
+// Math.sqrt() 🙋‍♂️
+// Math.sqrt(x) return the square root of x
+
+// console.log(Math.sqrt(25));
+// console.log(Math.sqrt(81));
+// console.log(Math.sqrt(66));
+
+// Math.abs() 🙋‍♂️
+// It return the absolute of that number. eg we paas -2 it return only positive number ie 2
+
+// console.log(Math.abs(2));
+// console.log(Math.abs(-22));
+// console.log(Math.abs(-955));
+
+// Math.ceil() 🙋‍♂️
+// It return the value of x rounded upto its nearest highest value.
+// means 1 value agr point ke age kuch hai to ik value increment krdega
+
+// console.log(Math.ceil(4.51));  // just increased value dega
+// console.log(Math.round(4.51));
+// console.log(Math.ceil(99.4));  // ceil basically it increased the value by one
+// console.log(Math.round(99.4)); // just decrease value agr .5 se kam ho toh
+
+//  Math.floor🙋‍♂️
+// isme jo number decimal se phle hai voi output milega
+// ceil me agr point ke baad kuch bhi to ik value increment hogi hi hogi
+
+// console.log(Math.floor(4.7));
+// console.log(Math.floor(9.9));
+
+// Math.min🙋‍♂️
+// It return the lowest value in all the numbers
+// console.log(Math.min(0, -1, 12, 41, 21));
+
+// Math.max()🙋‍♂️
+// It return the highest value in all the numbers
+// console.log(Math.max(0, -1, 21, 31, 0, 99));
+
+// Math.random() 🙋‍♂️
+// It is very usefull method in gaming like kisi ko random generate krke dena
+// It return the random number between the range 0 and 1
+
+// console.log(Math.random()); // random number 0 to 1 ke bheech dega always
+//  console.log(Math.floor(Math.random() * 10)); //Now it gives the random number between the range 0 and 10
+
+// Math.trunc 🙋‍♂️🙋‍♂️
+// It return the value
+// if the argument is positive number, Math.trunc() is equivalent to Math.floor();
+// Otherwise it is equivalent to math.ceil()
+
+// console.log(Math.trunc(4.7)); //op -> 4
+// console.log(Math.trunc(-99.1)); // op -> 5
+
+/***** Section 10 DOM IN Javascript [8:33 ]*****/
+
+/*
+
+  What we will learn 
+
+  1) Window vs Document 
+  2) DOM vs BOM
+  3) DOM Navigation 
+  4) Searching and Getting Elements Reference
+  
+*/
+
+// section 3: Navigation through DOM 👀
+
+// 1. document.documentElement
+// returs the root Element of the document
+// 2. document.head -> it return all the data inside the head
+// 3. document.body -> it returns all the data inside the body
+// 4. document.body.childNodes (includes the tab, enter and whiteSpace) -> it gives all the children inside the body
+// 5. document.body.children (without text Nodes, without white spaces and without enter)
+// 6.
+
+// Note: -> [ document gives and array of all the elements ]
+
+// ================ challenge time 12 =======================
+
+// Whether the childs has childNodes or Not?  [ means aise parents jinka child node hai ya nhi ]
+// document.body.hasChildNodes() -> It returns either true or false if present
+
+// q2) How to find the child in DOM tree
+// sol) firstchild() vs firstElementChild
+// lastchild() vs lastElementChild
+
+// document.firstChild ->It gives whitespaces also
+// document.firstElementChild -> it gives firstchild whitout whitespaces
+
+// CHAINING -> first element ke andr first element
+// document.firstElementChild.firstElementChild
+
+// If we want to access the parent
+// we will use parentNode
+// document.body.parentNode
+// document.body.parentElement
+
+// If we want to access the siblings of the element or tag
+// document.body.nextSibling -> it includes the whitespaces as well
+// document.body.previousSibling -> it not includes the whitespaces
+// document.body.previousElementSibling -> it does not includes the whitespaces
+
+// SECTION 4: How to search the Elements and the References
+// we will see the new file
+
+// 4.1) document.getElementById('pass the id').innerHTML
+// 4.2) document.getElementsByClassName("pass the className") // note: class name are mulitple but id are unique in html
+// 4.3) document.getElementsByTagName("pass the tag") // eg: paragraph chaiye to sara para aajege
+// 4.4) document.querySelector('.enter class by using [dot]') // It return the first matching value
+// 4.5) document.querySelector("# pas the id which is unique")
+// 4.6) document.querySelectorAll(".pss the class") or agr tag chaiye ho to . , # ki need nhi h
+// 4.7) document.getElementsByName("pass the attribute value"); output -> we got the node list
+
+// [note: agr humko ik child ke andr dusra child chaiye ho or uska andr teesra to vo use spaces [space means uske andr ka next child]]
+// document.querySelector('ul li.className')
+
+//Interview ques) diff between getElementbyId vs querySelector?
+
+// =========================================================
+
+/**** SECTION - 11 EVENTS IN JAVASCRIPT *****/
+
+/*
+      1) There are 4 ways of writting of an events in javascript
+      2) What is event object 
+      3) Mouse Event in js
+      4) keyboard event in js
+      5) input events in JS
+      */
+
+// Events -> Html element ke sth kuch happen hota hai ie events
+//  When JS is used in HTML pages, JS can "react" on these events. eg click on button
+
+// Here are some example of HTML events:
+// An Html we page has finished loading. [means jb website puri complete load nhi hoti that is also an event window.loadevent()]
+// An Html input field was changed
+// An Html button was clicked
+// Often when events happen, you may want to do something
+
+// section 1 👀 4 ways of writing Event in javascript
+
+// 1. using Inline Event alert();
+// 2. By calling a function (we already seen and most common way of writing)
+// 3. using Inline events (HTML onclick="* property and IE's attachEvenet")
+// 4. using Event listners (addEventListners and IE's attachment)
+
+// check events HTML file ie eventTypes file in Events folder
+
+// section 2 -> What is Event Object?
+// Event object is the parent object of the evemnt object
+// for example
+// MouseEvent , FocusEvent , KeyboardEvent etc
+// Check the Event Object .html
+
+// section 3: Mouse Event in Javascript
+// The mouseEvent object
+// koi bhi event agr mouse ke interact krne se hora hai ie mouseEvents
+// mouseEvent.html ie mouseDownUp.html
+// mouseDown -> means agr click press krke rakhege to color chage jese hi mouse release krege to mouseUp event run hoga
+// mouseEnter -> jese hi uspr cursor mouve krwaege to yeh event chl jaega
+// mouseLeave event -> jese uspr se bhar lekr jaege jisme enter tha pehle move to mouseLeave event chlega
+
+// Section 4 -> KeyBoard Event is Javascript
+// Event that occur when user presses a key
+// belong to keyBoard event
+// eg: keyPress.html, onkey down, onkey up
+// keypress event -> jbhi key o press krege krege to it will run
+// keyDown event ->
+// keyup event -> jabhi key ko kra release back to normal position to it is keyUp event
+
+// section 5 -> Input events in Javascript -> mostly used like input forms
+// the onchange event occurs when the value of an element has been changed
+
+// for radio buttons and checkboxes, the onchane event occurs when the check
+// state has been changed
+
+// Interview ques) diff between Inlineonclick and addEventListner?
+// sol) inlineonlineClick means agr same event 2 baar call krdo to its override the first method like 3rd way
+// addeventListner -> we can use same Event multiple times to it will not override
+
+/*************** SECtion -11 Time Based Events ************************************** */
+
+/* What we will do? 
+1) setTimeOut() 
+2) SetInterval() 
+3) clearTimeOut()
+4) ClearInterval() 
+ */
+
+// window object allows execution of code at specified time intervals
+// these time intervals are called timing events
+// the two key methods to use with javascript are
+// setTimeOut and setInterval
+
+// setTimeout(function,miiliseconds)
+// Executes a function, after waiting a specified number of milliseconds. It will run only once
+
+// setInterval(function, milliseconds)
+// same as setTimeOut, but it runs every time like a countdown that will run after every 1 sec
+
+// 1 ) setTimeOut ()
+// 2 ) clearTimeOut ()
+// 3 ) setInterval ()
+// 4 ) setInterval ()
+
+// ======== Interview ques 8 ================
+
+// setTime and setInterval()
+// setTimeOut ->  In this It is executes only once, eg we are are passing 4 sec then it will executes after 4 sec and only one time
+// setInterval -> In this it executes every time, jo hum time pass krege, har second me paas hoga
+
+// ===================================================================================
+
+/***** Section 12 OOPS in JS ******/
+
+/*
+What we will learn?
+
+1) What is Object literals 
+2) what is "this" object ?
+*/
+
+// 1) what is object literals?
+
+// object literal is simply key:value pair data structure
+
+// storing variable and function together in one container,
+// we can refer this as an Objects
+
+// How to create an Object?
+
+// 1st way
+
+// let bioData = {
+//   myName: "arsh",
+//   myAge: 26,
+//   getData: function () {
+//     // jo object ke andr function likhte hai to usko hum "method" bolte hai
+//     console.log(`My name is ${bioData.myName} and my Age is${bioData.myAge}`);
+//   },
+// };
+
+// console.log(bioData.myName); // agr jo bhi use krna ho to '.' krke use krege
+// console.log(bioData.getData());  // we get undefined because upr se vo kuch return nhi krra hai, so normally console.log remove krdo
+
+// 2nd way: no need to write function as well after es6: Object destructuring
+
+// let bioData = {
+//   myName: "arsh",
+//   myAge: 26,
+//   getData() {
+//     // means function keyword removve krdiya
+
+//     console.log(`My name is ${bioData.myName} and my Age is${bioData.myAge}`);
+//   },
+// };
+
+// bioData.getData();
+
+// What if we want object as a value inside an Object
+
+// let bioData = {
+//   myName: {
+//     realName: "Arshdeep Singh",
+//     college: "GTBIT",
+//   },
+//   myAge: 26,
+//   getData() {
+//     console.log(`My name is ${bioData.myName} and my Age is${bioData.myAge}`);
+//   },
+// };
+
+// console.log(bioData.myName.college);
+
+// 2nd What is "this" Object ?
+// This definition of "this" object is that it contain the current context
+// [means agr this ko use krre hai to kis scope or context me use krre hai vo btata hai.]
+
+// The this object can have different value depending on where it is placed
+
+// Example 1
+// console.log(this);
+// It refers to the current context and that is window global object. means window ka hi part hai yeh this usme sare method aate hai like alert etc
+
+// Example 2
+// function myName() {
+//   console.log(this);
+//   // this could be an interview ques? agr yeh jo this kiska context hai?
+//   // myName or something else ?
+//   // ans is Window Object
+// }
+// myName();
+
+// Example 3
+// var myNameis = "Arsh"; // it is global scope, so yeh this global scope ko dekta hai
+// function myName() {
+//   console.log(this.myNameis);
+// }
+// myName();
+
+// Example 4
+// const obj = {
+//   myAge: 24,
+//   name:'arsh',
+//   myName() {
+//     console.log(this); // Note: agr "this" object ko hum object ke andr declare krege to uska globl object
+//     // myAge hi hoga, means uska current context change hota hai from window global object to current object
+//   }
+// }
+// obj.myName();
+
+// Ex 5
+// this object will not work with arrow function because arrow function because
+
+// Interview Ques ) find output
+// const obj = {
+//   myAge: 26,
+//   myName: () => {
+//     console.log(this);
+//     // so here current context is window object because arrow function me this does not work
+//   },
+// };
+// obj.myName();
+
+// Interview ques or Ex 6
+// let bioData = {
+//   name: {
+//     realName: "Arshdeep singh",
+//     college: "GTBIT",
+//   },
+//   age: 26,
+//   getData() {
+//     console.log(`my college is ${this.name.college} and my age is ${this.age}`);
+//   },
+// };
+// bioData.getData();
+
+// ==========================================================
+
+/*** Advanced ECMA SCRIPT ES7 ******/
+
+// Destructuring  in ES6
+// The destructuring - it allows to extract the valus from array, or properties from objects
+// into distinct variables
+
+// Array destructuring
+// const bioData = ["vinod", "thapa", 26];
+
+// let fName = bioData[0];
+// let lName = bioData[1];
+// let age = bioData[2];
+
+// let [fName, lName, age] = bioData; // yeh index wise krta destructure and assigning the values
+
+// we can add the values too
+// let [fName, lName, age, degree = "BTech"] = bioData;
+// console.log(degree);
+// console.log(age);
+
+// Object destructuring
+// const bioData = {
+//   fName: "Arsh",
+//   lName: "deep",
+//   age: 26,
+// };
+
+// let age = bioData.age;
+// let fname = bioData.fName;
+
+// let { fName, lName, age } = bioData;  // note: name of the variables, propertie are same which we declare in the object
+// // console.log(age);
+// console.log(fName);
+
+// Object Properties
+
+// we can now use Dynamic Properties
+
+// let myName = 'Arsh';
+// const bioData = {
+//   [myName]: "hello how are you",
+//   [26 + 6]: "is my age"
+// }
+// // jo myName hai uski dynamic key chahte hai ki jo upr likha hai vo aaje, then we use array brackets
+// // and we can do addition, subtraction, multiply and divide into the array brackets
+// console.log(bioData);
+
+// no need to write key and value, if both are same
+// let myName = "Arshddeep Singh";
+// let myAge = 26;
+// const bioData = {
+//   myName,
+//   myAge
+// };
+// console.log(bioData);
+
+// Spread Operator
+
+// const colors = ["red", "green", "blue", "yellow", "purple"];
+
+// const myColors = ["red", "green", "blue", "yellow", "purple", "black", "white"];
+// // agr hmko mycolors me 2 colors new add krne ho to kya hum pehle wale sare colors likhege or new colors which is not a good way
+// // es6 has give us some feature ie spread operator
+// // so 1st parameter is jo array se value copy krni h uska name and 2nd parameter is jo updated value add krni hai vo
+
+// const myFavouriteColor = [...colors, "black", "white"];
+// console.log(myFavouriteColor);
+
+// ES7 OR ECMA SCRIPT 2016 features
+
+// 1 Array.prototype.includes [done prev]
+// const colors = ["red", "green", "blue", "yellow", "purple"];
+// console.log(colors.includes('red'));  It gives true or false, if it is present it gives true otherwise false
+
+// 2 Exponention operator (**)
+// console.log(2**3); //2 raised to power 8
+
+// ES8 Features - 2017
+
+// const message = "Arsh";
+//  console.log(message);
+//  console.log(message.padStart(10));  // it gives margin from left side
+//  console.log(message.padEnd(10));  // it gives margin from right side
+
+// 2nd feature - loop
+// const person = { name: "fred", age: 87 };
+// console.log(Object.values(person)); // it travels on key value pairs and print only the values
+// console.log(Object.entries(person)); // entities gives the  key as well as value and it return the array
+
+// ES 2018 features REST and SpreadOperator
+// const person = { name: "arsh", age: 22 };
+// const sPerson = { ...person };
+// console.log(sPerson);
+
+// ES 2019
+// eg: when we were doing reduce method, there we flatt the array, means array ke andr ik array tha or uske andr ik hor array
+// the usko solve nhi kr para tha so here we have feature: "Array.prototype.{flat,flatMap]"
+
+// const arr = [
+//   ["zone_1,zone_2"],
+//   ["zone_3,zone_4"],
+//   ["zone_5,zone_6"],
+//   ["zone7", ["zone_8", ["zone_9", ["zone 12", ["zone_13"]]]]], //[Note: yeh nested array ko flat nhi kar skta after ecma 2020 to kar payega]
+// ];
+
+// // let flatArr = arr.reduce((acc, currElem) => {
+// //   return acc.concat(currElem);
+// // });
+
+// // console.log(flatArr);
+// // console.log(arr.flat(2));  //here we pass the level of array
+// // if we have multiple level of array then we have to pass Infinity inside the paranthesis
+
+// console.log(arr.flat(Infinity));
+
+// 2nd Feature - object.fromEnteries()
+// pichle wale me object ko array ke andr array me convert krke dera tha
+// but agr humko object me chaiye ho toh
+
+// const person = { name: "arsh", age: 22 };
+// const arrObj = Object.entries(person);
+// console.log(Object.fromEntries(arrObj)); // means ik array of array usko object me convert krdega
+
+// ES 2020 Features
+// #1: BigInt
+// means agr ik limit ke beyond calculations krege to normal number ka output galat aayega and
+// if we want the correct output to jo number add krege uske aage 'n' add krege number aage
+// then it will give correct output
+
+// let oldNum = Number.MAX_SAFE_INTEGER;
+// // console.log(oldNum);
+// // console.log(oldNum + 10);
+// const newNum = 9007199254741000n + 17n;
+// console.log(newNum);
+// console.log(typeof newNum);
+
+// ES 2014 Feature
+// "use strict" feature -> means hum normally variable declare krlete hai  without writting let,const,var
+// so agr hum use strict likhte hai to we can not assign direct value to them
+
+// // "use strict";
+// x = 3.14;
+// console.log(x);
+
+// ========================================================================
+
+/*** Section 13) ADVANCED JAVASCRIPT - 12:07 MIN *****/
+
+/*
+  What will we see
+1) event propagation (event bubbling and event capturing)
+2) higher order function
+3) callback function
+4) function currying (we will see after async JS section)
+5) callback hell
+6) AJAX call using XMLhttpRequest
+7) BONUS section JSON
+8) Fetch API 
+9) Promises
+10) Async -Await
+11) Error Handling in Js
+
+*/
+
+// 1) event propagation
+// event propagation is basically determines that how the code is execute or the order of execution. eg: we have a parent div
+// and inside we have one more div and we have applied same event on both the div, so if we click on inside div which will it open first that is
+// event propation.
+// It has of two type:
+// 1) event capturing
+// 2) event bubbling -> both are applied mostly on addEventListner event. It is order is from bottom to top
+// and for more check eventBubble.html file
+
+// 2) High Order Functions
+
+/*
+ */
+//============================================================================================================================================
+
+/*
+  USE AJAX USING XML HTTP request -> check folder
+
+
+ */
+
+// BONUS JSON
+// 1.) JSON.stringify turns  a Javascript Object into JSON text and stores that JSON text
+// in a String, eg
+
+// var obj = { key_1: "some text", key_2: true, key_3: 5 };
+// var objectasString = JSON.stringify(obj);
+// console.log( typeof objectasString);
+
+// 2.) JSON.parse - it turns a string of JSON into JAVAscript object eg
+
+// var obj = { key_1: "some text", key_2: true, key_3: 5 };
+// var objectasString = JSON.stringify(obj);
+// var objAsStringasObject = JSON.parse(objectasString);
+// console.log(typeof objAsStringasObject);  // obj
+
+
+
+// Project 2: light on off
+

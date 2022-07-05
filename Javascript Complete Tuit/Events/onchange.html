@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input events onchange event!</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <label for="">Your Name</label>
+        <input type="text" name="" id="ice" />
+        <br />
+        <label for=""
+          >choose correct ice cream flavour
+          <select name="iceCreams" id="iceCreams">
+            <option value="">select one ...</option>
+            <option value="chocolate">chocolate</option>
+            <option value="sardine">sardine</option>
+            <option value="vanilla">vanilla</option>
+          </select>
+        </label>
+        <br />
+        <div class="result"></div>
+      </div>
+    </div>
+
+    <script>
+      //   const selectElement = () => {
+      //     const inputchange = document.getElementById("ice").value; // note: agr input box hoga to value hi likhege
+      //     const iceCream = document.getElementById("iceCreams").value; //agr koi text hota to . inner HTML likhdete
+      //     const ans = document.getElementById("result");
+
+      //     ans.innerHTML = `Mr ${inputchange} selects the ${iceCream}`;
+      //     // console.log(`${inputchange} and ${iceCream}`);
+      //   };
+
+      const iceCreams = document.getElementById("iceCreams");
+      iceCreams.addEventListener("change", () => {
+        const inputchange = document.getElementById("ice").value;
+        const iceCream = document.getElementById("iceCreams").value; //agr koi text hota to . inner HTML likhdete
+        const ans = document.getElementById("result");
+
+        ans.innerHTML = `Mr ${inputchange} selects the ${iceCream}`;
+        // console.log(`${inputchange} and ${iceCream}`);
+      });
+    </script>
+  </body>
+</html>
